@@ -6,7 +6,7 @@ import "./globals.css";
 // Aparece só quando o próprio layout raiz quebra. Substitui o layout, por isso traz <html>, <body> e o CSS.
 export default function GlobalError({ retry }: { error: Error & { digest?: string }; retry: () => void }) {
   return (
-    <html lang="pt-BR" className="antialiased">
+    <html lang="pt-BR" className="dark antialiased">
       <body className="bg-dot-grid min-h-screen font-sans">
         <title>{`Algo deu errado | ${site.name}`}</title>
         <section className="flex min-h-screen flex-col items-center justify-center px-4 text-center">

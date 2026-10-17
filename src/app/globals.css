@@ -143,14 +143,15 @@ html {
   scroll-padding-top: 6rem;
 }
 
-/* Escala global no desktop e notebook: como o Tailwind mede quase tudo em rem, reduzir a fonte-raiz
-   encolhe textos, espaços e larguras como um zoom de 80%, sem usar zoom. Para calibrar, mude só o 80%.
+/* Escala global só no notebook (1024–1799px: MacBook Air/Pro 14" e 16", Windows Full HD em 125%): como o
+   Tailwind mede quase tudo em rem, reduzir a fonte-raiz encolhe textos, espaços e larguras como um zoom de 80%,
+   sem usar zoom. Para calibrar, mude só o 80%. No desktop (≥1800px, monitores Full HD ou maiores) fica em 100%.
    --text-scale vem do menu de acessibilidade (A−/A+) e multiplica a fonte-raiz do site inteiro. */
 html {
   font-size: calc(100% * var(--text-scale, 1));
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1799px) {
   html {
     font-size: calc(80% * var(--text-scale, 1));
   }

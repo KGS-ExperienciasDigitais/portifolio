@@ -30,12 +30,9 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-// Cor da barra do navegador no celular: o --background de globals.css no claro e no escuro.
+// Cor da barra do navegador no celular: o --background do tema escuro (o padrão do site, que não segue o sistema).
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#020617" },
-  ],
+  themeColor: "#020617",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
