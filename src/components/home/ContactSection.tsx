@@ -1,12 +1,11 @@
 import { Mail } from "lucide-react";
-import { BehanceIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
+import { LinkedinIcon } from "@/components/ui/BrandIcons";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/content/site";
 
 const channels = [
   { label: "Email", href: `mailto:${site.links.email}`, icon: <Mail className="size-6" />, external: false },
   { label: "LinkedIn", href: site.links.linkedin, icon: <LinkedinIcon />, external: true },
-  { label: "Behance", href: site.links.behance, icon: <BehanceIcon />, external: true },
 ];
 
 export function ContactSection() {

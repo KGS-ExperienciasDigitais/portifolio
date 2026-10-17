@@ -9,13 +9,3 @@ export function LinkedinIcon({ className = "size-6" }: IconProps) {
     </svg>
   );
 }
-
-export function BehanceIcon({ className = "size-6" }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden className={className}>
-      <text x="12" y="17" textAnchor="middle" fontSize="14" fontWeight="700" fill="currentColor" fontFamily="inherit">
-        Bē
-      </text>
-    </svg>
-  );
-}

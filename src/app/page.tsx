@@ -22,7 +22,7 @@ const profileJsonLd = {
     url: site.url,
     image: `${site.url}${site.profile.heroPhoto.src}`,
     homeLocation: { "@type": "Place", name: site.location.city },
-    sameAs: [site.links.linkedin, site.links.behance],
+    sameAs: [site.links.linkedin],
   },
 };
 

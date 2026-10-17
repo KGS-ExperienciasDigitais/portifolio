@@ -18,7 +18,6 @@ export const site = {
   links: {
     email: "seuemail@exemplo.com",
     linkedin: "https://www.linkedin.com/in/kevintheux/",
-    behance: "https://www.behance.net/seu-perfil",
     cv: "/cv/kevin-souza-curriculo.pdf",
   },
 
