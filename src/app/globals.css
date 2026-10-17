@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Atributos que o menu de acessibilidade põe no <html> (ver components/layout/accessibility.ts). */
+@custom-variant text-up (&:where([data-text-up], [data-text-up] *));
+@custom-variant text-large (&:where([data-text-large], [data-text-large] *));
+
+/* Contraste reforçado: escolhido no menu ou pedido pelo sistema (prefers-contrast: more) quando o menu está em "Automático". */
+@custom-variant contrast-more {
+  &:where([data-contrast="reforcado"]) {
+    @slot;
+  }
+  @media (prefers-contrast: more) {
+    &:where(:not([data-contrast])) {
+      @slot;
+    }
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted: #4b5563;
+  --subtle: #6b7280;
+  --line: #d1d5db;
+  --surface: #ffffff;
+  --dot-grid-color: rgba(0, 0, 0, 0.12);
+  --accent: #2563eb;
+  --success: #16a34a;
+  /* Botões de ícone do header não crescem com o --text-scale (só o texto precisa crescer), para caber no celular. */
+  --icon-button: calc(2.25rem / var(--text-scale, 1));
+  --icon: calc(1.25rem / var(--text-scale, 1));
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f1f5f9;
+  --muted: #cbd5e1;
+  --subtle: #94a3b8;
+  --line: #334155;
+  --surface: #0f172a;
+  --dot-grid-color: rgba(255, 255, 255, 0.08);
+  --accent: #60a5fa;
+  --success: #4ade80;
+}
+
+/* Reforçado: todo texto com contraste de pelo menos 7:1 (WCAG AAA), mantendo claro/escuro.
+   As classes fixas de texto (text-gray-700, text-slate-600…) leem estas variáveis do Tailwind; os fundos usam outros tons. */
+:root {
+  @variant contrast-more {
+    --muted: var(--foreground);
+    --subtle: #1f2937;
+    --line: #4b5563;
+    --accent: #1e40af;
+    --success: #166534;
+    --color-gray-400: #111827;
+    --color-gray-500: #111827;
+    --color-gray-600: #111827;
+    --color-gray-700: #111827;
+    --color-gray-800: #111827;
+    --color-slate-500: #0f172a;
+    --color-slate-600: #0f172a;
+  }
+}
+
+.dark {
+  @variant contrast-more {
+    --subtle: #e2e8f0;
+    --line: #94a3b8;
+    --accent: #93c5fd;
+    --success: #86efac;
+    --color-slate-200: #f8fafc;
+    --color-slate-300: #f8fafc;
+    --color-slate-400: #f1f5f9;
+    --color-slate-500: #e2e8f0;
+  }
+}
+
+/* Alto contraste no padrão gov.br: fundo preto, texto branco, links e foco amarelos. */
+[data-contrast="alto"] {
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #ffffff;
+  --subtle: #ffffff;
+  --line: #ffffff;
+  --surface: #000000;
+  --accent: #ffff00;
+  --success: #ffff00;
+  --dot-grid-color: transparent;
+  color-scheme: dark;
+}
+
+/* Cantos mais arredondados que o padrão do Tailwind (lg 0.5rem, xl 0.75rem, 2xl 1rem) em todo o site. */
+@theme {
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-reverse: marquee 30s linear infinite reverse;
+  --animate-scroll-wheel: scroll-wheel 1.6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Rodinha do mouse: desce e some, depois volta invisível ao topo. */
+  @keyframes scroll-wheel {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    70% {
+      transform: translateY(0.625rem);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+/* Escala global no desktop e notebook: como o Tailwind mede quase tudo em rem, reduzir a fonte-raiz
+   encolhe textos, espaços e larguras como um zoom de 80%, sem usar zoom. Para calibrar, mude só o 80%.
+   --text-scale vem do menu de acessibilidade (A−/A+) e multiplica a fonte-raiz do site inteiro. */
+html {
+  font-size: calc(100% * var(--text-scale, 1));
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: calc(80% * var(--text-scale, 1));
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.bg-dot-grid {
+  background-color: var(--background);
+  background-image: radial-gradient(circle at center, var(--dot-grid-color) 1px, transparent 1px);
+  background-size: 1.375rem 1.375rem;
+}
+
+@utility glass {
+  border: 1px solid rgb(255 255 255 / 0.7);
+  background-color: rgb(255 255 255 / 0.45);
+  backdrop-filter: blur(24px);
+  box-shadow:
+    0 8px 32px rgb(0 0 0 / 0.08),
+    0 0 0 1px rgb(0 0 0 / 0.04);
+
+  &:where(.dark, .dark *) {
+    border-color: rgb(255 255 255 / 0.1);
+    background-color: rgb(2 6 23 / 0.45);
+    box-shadow:
+      0 8px 32px rgb(0 0 0 / 0.35),
+      0 0 0 1px rgb(255 255 255 / 0.06);
+  }
+}
+
+/* Reforçado: vidro quase opaco e com borda visível, para o texto não depender do que passa por trás. */
+[data-contrast="reforcado"] .glass {
+  border-color: var(--line);
+  background-color: color-mix(in srgb, var(--background) 92%, transparent);
+}
+
+@media (prefers-contrast: more) {
+  :root:not([data-contrast]) .glass {
+    border-color: var(--line);
+    background-color: color-mix(in srgb, var(--background) 92%, transparent);
+  }
+}
+
+/* Alto contraste: achata tudo em preto e branco, sem sombras, gradientes ou desfoque. Imagens e vídeos ficam como estão.
+   Os fundos ficam transparentes sobre a página preta; só o que se sobrepõe ao conteúdo (vidro, diálogos) ganha preto sólido. */
+[data-contrast="alto"] *:not(img, video, canvas, svg, svg *) {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+[data-contrast="alto"] :is(a, a *):not(svg, svg *) {
+  color: #ffff00 !important;
+}
+
+[data-contrast="alto"] a {
+  text-decoration: underline !important;
+}
+
+[data-contrast="alto"] :is(.glass, dialog) {
+  background-color: #000000 !important;
+}
+
+/* O que era preenchido com a cor de destaque (botões de ação, detalhes decorativos) vira amarelo com texto preto. */
+[data-contrast="alto"] :is([class*="bg-accent"], [class*="bg-blue-"]),
+[data-contrast="alto"] :is([class*="bg-accent"], [class*="bg-blue-"]) * {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* Sem fundos, o item ativo precisa de outra marca visual. */
+[data-contrast="alto"] :is([aria-current="true"], [aria-checked="true"], [aria-pressed="true"]) {
+  outline: 2px solid #ffff00;
+  outline-offset: 2px;
+}
+
+[data-contrast] :focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Modo de cores forçadas (ex.: Alto Contraste do Windows): o sistema define a paleta; só garantimos bordas e estados visíveis. */
+@media (forced-colors: active) {
+  .glass {
+    border: 1px solid CanvasText;
+  }
+
+  :is([aria-current="true"], [aria-checked="true"], [aria-pressed="true"]) {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
