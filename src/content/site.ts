@@ -33,7 +33,10 @@ export const site = {
     // A primeira começa no centro do carrossel; as outras seguem em volta.
     photos: [
       { src: "/images/perfil/kevin-imgs/pixelshow.jpg", alt: "Kevin e equipe no Pixel Show, em frente ao painel “Keep Art Human”" },
+      { src: "/images/perfil/kevin-imgs/dex.jpeg", alt: "Crachá do Design & Experience 2024 com o nome Kevin Souza, na mão do Kevin" },
+      { src: "/images/perfil/kevin-imgs/empatia.jpeg", alt: "Kevin em frente ao painel “Empatia” do Grupo Liberty Brasil, segurando uma plaquinha de emoji sorrindo de lado" },
       { src: "/images/perfil/kevin-imgs/estacao-de-trabalho.jpeg", alt: "Estação de trabalho: notebook com código aberto, teclado, caderno e porta-retratos" },
+      { src: "/images/perfil/kevin-imgs/UX.jpeg", alt: "“UX” desenhado à mão em caneta preta numa superfície amarela, assinado Kevin" },
       { src: "/images/perfil/kevin-imgs/hobby.jpeg", alt: "Tatuagens e desenhos em traço fino, um dos hobbies do Kevin" },
       { src: "/images/perfil/kevin-imgs/lazer.jpeg", alt: "Controle de PlayStation em frente à TV com a biblioteca de jogos aberta" },
       { src: "/images/perfil/kevin-imgs/crianca.jpeg", alt: "Kevin criança, de óculos e blusa listrada, fazendo careta numa festa" },
