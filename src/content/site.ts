@@ -1,3 +1,5 @@
+import type { MediaItem } from "@/components/ui/Media";
+
 // Todos os dados pessoais do site ficam aqui. Troque os placeholders pelos seus dados.
 
 export const site = {
@@ -6,7 +8,12 @@ export const site = {
   role: "UX/UI Designer",
   tagline: "Desenho produtos digitais faceis, úteis e intencionais. Conheça meu trabalho abaixo.",
   description: "Portfólio de UX/UI Design com estudos de caso de produtos digitais.",
-  url: "https://seusite.com.br",
+  // Versão principal do domínio, sem barra no fim (o www redireciona para ela na hospedagem).
+  url: "https://kevintheux.com.br",
+
+  // Prévia ao compartilhar o link (LinkedIn, WhatsApp): JPG 1200×630, menos de 300 KB, em public/og/.
+  // Preencha `src` quando a arte existir (ex.: "/og/home.jpg"); sem ela, o link sai sem imagem.
+  shareImage: { alt: "Kevin Souza, UX/UI Designer" } as MediaItem,
 
   links: {
     email: "seuemail@exemplo.com",

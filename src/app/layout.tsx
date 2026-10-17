@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
 import { a11yInitScript } from "@/components/layout/accessibility";
 import { Footer } from "@/components/layout/Footer";
@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { ThemeCord } from "@/components/layout/ThemeCord";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { site } from "@/content/site";
+import { openGraphBase } from "./shared-metadata";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -21,12 +22,20 @@ export const metadata: Metadata = {
   },
   description: site.description,
   openGraph: {
+    ...openGraphBase(),
     type: "website",
-    locale: "pt_BR",
-    siteName: site.name,
     title: `${site.name} | ${site.role}`,
     description: site.description,
   },
+  twitter: { card: "summary_large_image" },
+};
+
+// Cor da barra do navegador no celular: o --background de globals.css no claro e no escuro.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#020617" },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

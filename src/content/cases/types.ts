@@ -35,6 +35,8 @@ export type CaseStudy = {
   name: string;
   summary: string;
   cover: MediaItem;
+  /** Prévia ao compartilhar o link do caso (JPG 1200×630, menos de 300 KB). Sem ela, usa a da home. */
+  og?: MediaItem;
   /** Cor de destaque do caso (títulos, callouts, rótulos). Precisa ser legível no claro e no escuro. */
   accent?: string;
   overview: {

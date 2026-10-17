@@ -7,6 +7,8 @@ import { CaseNav } from "@/components/case/CaseNav";
 import { Overview } from "@/components/case/Overview";
 import { SectionTitle } from "@/components/case/SectionTitle";
 import { cases, getCase } from "@/content/cases";
+import { site } from "@/content/site";
+import { openGraphBase } from "@/app/shared-metadata";
 
 export function generateStaticParams() {
   return cases.map((study) => ({ slug: study.slug }));
@@ -16,7 +18,19 @@ export async function generateMetadata({ params }: PageProps<"/projetos/[slug]">
   const { slug } = await params;
   const study = getCase(slug);
   if (!study) return {};
-  return { title: study.name, description: study.summary };
+  const path = `/projetos/${study.slug}`;
+  return {
+    title: study.name,
+    description: study.summary,
+    alternates: { canonical: path },
+    openGraph: {
+      ...openGraphBase(study.og),
+      type: "article",
+      url: path,
+      title: `${study.name} | ${site.name}`,
+      description: study.summary,
+    },
+  };
 }
 
 // A leitura de params fica dentro do Suspense para o shell da rota ser compartilhado entre os casos
