@@ -9,7 +9,6 @@ export function ProfileCard() {
         <div className="mb-4">
           <ProfilePhotos photos={site.profile.photos} />
         </div>
-        <p className="text-xs text-subtle">{site.profile.eyebrow}</p>
         <h3 className="text-2xl font-bold">{site.name}</h3>
         <p className="text-sm text-muted">{site.profile.headline}</p>
       </div>
