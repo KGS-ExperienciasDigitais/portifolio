@@ -36,7 +36,13 @@ export const site = {
     title: "Vamos conversar",
     intro:
       "Estou aberto a novos projetos, ideias e oportunidades de fazer parte do seu time. Fique à vontade para entrar em contato!",
-    email: { label: "E-mail", text: "Me envie uma mensagem" },
+    // O card copia `links.email` em vez de abrir o app de e-mail; `copied` substitui o texto por alguns segundos.
+    email: {
+      label: "E-mail",
+      text: "Me envie uma mensagem",
+      copied: "E-mail copiado!",
+      copyHint: "copia o endereço",
+    },
     linkedin: { label: "LinkedIn", text: "Se conecte comigo" },
     // O texto do card do WhatsApp é o número (`links.whatsapp.display`).
     whatsapp: { label: "WhatsApp" },
