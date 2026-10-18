@@ -5,15 +5,17 @@ import type { MediaItem } from "@/components/ui/Media";
 export const site = {
   name: "Kevin",
   fullName: "Kevin Souza",
+  // Logotipo K ao lado do nome no header (PNG 128×128, sem margem, fundo transparente).
+  logo: "/logos-kevin/simbolo-azul-128.png",
   role: "UX/UI Designer",
-  tagline: "Desenho produtos digitais faceis, úteis e intencionais. Conheça meu trabalho abaixo.",
+  tagline: "Desenho produtos digitais e experiências faceis, úteis e intencionais. Conheça meu trabalho abaixo.",
   description: "Portfólio de UX/UI Design com estudos de caso de produtos digitais.",
   // Versão principal do domínio, sem barra no fim (o www redireciona para ela na hospedagem).
   url: "https://kevintheux.com.br",
 
   // Prévia ao compartilhar o link (LinkedIn, WhatsApp): JPG 1200×630, menos de 300 KB, em public/og/.
-  // Preencha `src` quando a arte existir (ex.: "/og/home.jpg"); sem ela, o link sai sem imagem.
-  shareImage: { alt: "Kevin Souza, UX/UI Designer" } as MediaItem,
+  // Gerado de public/images/compartilhamento/Banner K neon.png; sem `src`, o link sai sem imagem.
+  shareImage: { src: "/og/home.jpg", alt: "Kevin Souza, UX/UI Designer" } as MediaItem,
 
   links: {
     email: "seuemail@exemplo.com",
