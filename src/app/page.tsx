@@ -3,6 +3,7 @@ import { About } from "@/components/home/About";
 import { ContactSection } from "@/components/home/ContactSection";
 import { Hero } from "@/components/home/Hero";
 import { ProjectsSection } from "@/components/home/ProjectsSection";
+import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { site } from "@/content/site";
 
 // O canonical fica na página, não no layout: no layout, toda página nova herdaria o canonical da home.
@@ -35,9 +36,12 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd).replace(/</g, "\\u003c") }}
       />
       <Hero />
-      <ProjectsSection />
-      <About />
-      <ContactSection />
+      {/* O que vem abaixo do Hero só aparece depois que o visitante rola a página. */}
+      <RevealOnScroll>
+        <ProjectsSection />
+        <About />
+        <ContactSection />
+      </RevealOnScroll>
     </>
   );
 }
