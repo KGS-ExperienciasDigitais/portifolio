@@ -18,11 +18,27 @@ export const site = {
   links: {
     email: "seuemail@exemplo.com",
     linkedin: "https://www.linkedin.com/in/kevintheux/",
+    // `number` no formato do wa.me: DDI + DDD + número, só dígitos. `message` já vem escrita na conversa.
+    whatsapp: {
+      number: "5566996687308",
+      display: "(66) 99668-7308",
+      message: "Olá, Kevin! Vim pelo seu portfólio e tenho uma oportunidade.",
+    },
     cv: "/cv/kevin-souza-curriculo.pdf",
   },
 
   // Botão abaixo do título "Sobre mim"; baixa o PDF de `links.cv`.
   cvButton: "Baixar currículo",
+
+  contact: {
+    title: "Vamos conversar",
+    intro:
+      "Estou aberto a novos projetos, ideias e oportunidades de fazer parte do seu time. Fique à vontade para entrar em contato!",
+    email: { label: "E-mail", text: "Me envie uma mensagem" },
+    linkedin: { label: "LinkedIn", text: "Se conecte comigo" },
+    // O texto do card do WhatsApp é o número (`links.whatsapp.display`).
+    whatsapp: { label: "WhatsApp" },
+  },
 
   location: {
     city: "São Paulo, Brasil",

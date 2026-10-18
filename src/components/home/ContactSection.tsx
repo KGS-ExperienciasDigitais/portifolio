@@ -1,51 +1,69 @@
-import { Mail } from "lucide-react";
-import { LinkedinIcon } from "@/components/ui/BrandIcons";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { LinkedinIcon, WhatsappIcon } from "@/components/ui/BrandIcons";
+import { GlassCard } from "@/components/ui/GlassCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/content/site";
 
+const { contact, links } = site;
+
 const channels = [
-  { label: "Email", href: `mailto:${site.links.email}`, icon: <Mail className="size-6" />, external: false },
-  { label: "LinkedIn", href: site.links.linkedin, icon: <LinkedinIcon />, external: true },
+  {
+    ...contact.email,
+    href: `mailto:${links.email}`,
+    icon: <Mail className="size-8" />,
+    external: false,
+  },
+  {
+    ...contact.linkedin,
+    href: links.linkedin,
+    icon: <LinkedinIcon className="size-8" />,
+    external: true,
+  },
+  {
+    ...contact.whatsapp,
+    text: links.whatsapp.display,
+    href: `https://wa.me/${links.whatsapp.number}?text=${encodeURIComponent(links.whatsapp.message)}`,
+    icon: <WhatsappIcon className="size-8" />,
+    external: true,
+  },
 ];
 
 export function ContactSection() {
   return (
     <section id="contato" className="px-4 pt-16 pb-20 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-4xl text-center">
-        <Reveal>
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">Vamos conversar</h2>
-          <p className="mx-auto mb-12 max-w-2xl text-lg">
-            Estou aberto a novos projetos, ideias e oportunidades de fazer parte do seu time. Fique à vontade para entrar
-            em contato!
-          </p>
+      <div className="container mx-auto max-w-4xl">
+        <Reveal className="text-center">
+          <h2 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">{contact.title}</h2>
+          <p className="mx-auto mb-12 max-w-2xl text-lg">{contact.intro}</p>
         </Reveal>
         <Reveal delay={0.1}>
-          <ul className="mb-12 flex flex-wrap justify-center gap-6">
+          {/* Colunas em rem: com o texto ampliado no menu de acessibilidade, os cards quebram de linha sozinhos. */}
+          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))] gap-6">
             {channels.map((channel) => (
               <li key={channel.label}>
-                <a
-                  href={channel.href}
-                  target={channel.external ? "_blank" : undefined}
-                  rel={channel.external ? "noopener noreferrer" : undefined}
-                  className="flex flex-col items-center gap-2 rounded-lg bg-gray-50 p-4 transition-colors hover:text-accent dark:bg-slate-900"
-                >
-                  {channel.icon}
-                  <span className="text-sm font-medium">{channel.label}</span>
-                </a>
+                <GlassCard className="h-full">
+                  <a
+                    href={channel.href}
+                    target={channel.external ? "_blank" : undefined}
+                    rel={channel.external ? "noopener noreferrer" : undefined}
+                    className="group flex h-full flex-col gap-4 rounded-2xl p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  >
+                    <span className="flex items-start justify-between">
+                      <span className="transition-colors group-hover:text-accent">{channel.icon}</span>
+                      <ArrowUpRight className="size-5 text-subtle transition-colors group-hover:text-accent" aria-hidden />
+                    </span>
+                    <span className="flex flex-col gap-1">
+                      <span className="text-lg font-semibold transition-colors group-hover:text-accent">
+                        {channel.label}
+                      </span>
+                      <span className="text-muted">{channel.text}</span>
+                      {channel.external && <span className="sr-only"> (abre em nova aba)</span>}
+                    </span>
+                  </a>
+                </GlassCard>
               </li>
             ))}
           </ul>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <div className="rounded-lg bg-gray-50 p-8 dark:bg-slate-900">
-            <h3 className="mb-4 text-xl font-semibold">Mande uma mensagem</h3>
-            <a
-              href={`mailto:${site.links.email}`}
-              className="inline-block rounded-lg bg-blue-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
-            >
-              Entrar em contato
-            </a>
-          </div>
         </Reveal>
       </div>
     </section>
