@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Media } from "@/components/ui/Media";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/content/site";
+import { CvDownloadButton } from "./CvDownloadButton";
 import { ExperienceCard } from "./ExperienceCard";
 import { LocationCard } from "./LocationCard";
 import { ProfileCard } from "./ProfileCard";
@@ -24,12 +24,7 @@ export function About() {
       <div className="container mx-auto max-w-7xl">
         <Reveal className="mb-16 flex flex-col items-center gap-6 text-center">
           <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">Sobre mim</h2>
-          <Link
-            href="#projetos"
-            className="rounded-full bg-gray-100 px-6 py-2 font-medium text-gray-700 transition-all duration-200 hover:scale-105 hover:bg-gray-200 active:scale-95 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-          >
-            Pular para projetos
-          </Link>
+          <CvDownloadButton />
         </Reveal>
 
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3 lg:gap-8">

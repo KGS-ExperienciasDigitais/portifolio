@@ -35,8 +35,8 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd).replace(/</g, "\\u003c") }}
       />
       <Hero />
-      <About />
       <ProjectsSection />
+      <About />
       <ContactSection />
     </>
   );

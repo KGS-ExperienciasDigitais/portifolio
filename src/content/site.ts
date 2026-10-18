@@ -21,6 +21,9 @@ export const site = {
     cv: "/cv/kevin-souza-curriculo.pdf",
   },
 
+  // Botão abaixo do título "Sobre mim"; baixa o PDF de `links.cv`.
+  cvButton: "Baixar currículo",
+
   location: {
     city: "São Paulo, Brasil",
     timeZone: "America/Sao_Paulo",
@@ -125,7 +128,7 @@ export const site = {
 
 export const navItems = [
   { id: "inicio", label: "Início" },
-  { id: "sobre", label: "Sobre" },
   { id: "projetos", label: "Projetos" },
+  { id: "sobre", label: "Sobre" },
   { id: "contato", label: "Contato" },
 ] as const;
