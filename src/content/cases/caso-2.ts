@@ -13,9 +13,9 @@ export const caso2: CaseStudy = {
   summary: subtitle,
   cover: {
     src: `${img}/capa.png`,
-    alt: "Um onboarding orientado à resolução de problema: telas de desafio, diagnóstico, plano de ação e conexão do WhatsApp na NextApps",
-    width: 1671,
-    height: 941,
+    alt: "Quatro telas do onboarding da NextApps (necessidade, contexto, diagnóstico com plano de ação e configuração guiada) com o símbolo da marca ao centro",
+    width: 1920,
+    height: 1200,
   },
   overview: {
     info: [
