@@ -10,7 +10,8 @@ export type CaseMedia = MediaItem & {
 export type Block =
   | { type: "subsection"; title: string }
   | { type: "text"; heading?: string; body?: string | string[]; bullets?: string[]; ordered?: boolean; after?: string | string[] }
-  | { type: "callout"; tone: "question" | "note"; text: string }
+  /** Pergunta-guia em destaque. Sem cards de ressalva: o cuidado com o escopo fica no próprio texto. */
+  | { type: "callout"; tone: "question"; text: string }
   | { type: "findings"; intro?: string; items: { title: string; body: string }[] }
   | { type: "media"; items: CaseMedia[] }
   | { type: "gallery"; items: CaseMedia[]; columns?: 2 | 4 }
@@ -24,6 +25,18 @@ export type Block =
 export type CaseSection = {
   title: string;
   blocks: Block[];
+};
+
+/** Uma etapa do resumo: rótulo curto, título, uma ou duas frases e o visual ao lado. */
+export type CaseStep = {
+  /** Nome curto na barra de etapas. */
+  label: string;
+  title: string;
+  body: string | string[];
+  /** Mesmos blocos do corpo do caso. Precisa caber na altura da tela do notebook sem rolar. */
+  visual: Block[];
+  /** Título da seção ou subseção do estudo completo que aprofunda a etapa (vira o link "Ler no estudo completo"). */
+  more?: string;
 };
 
 export type CaseStudy = {
@@ -46,4 +59,8 @@ export type CaseStudy = {
     strategy?: string[];
   };
   sections: CaseSection[];
+  /** Resumo em etapas, a página padrão do caso. A primeira etapa ("Visão geral") sai do `overview` e da capa. */
+  steps: CaseStep[];
+  /** Fecho do resumo, depois da última etapa. */
+  takeaway: { title: string; body: string | string[] };
 };

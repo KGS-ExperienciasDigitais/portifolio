@@ -230,7 +230,7 @@ body {
 }
 
 /* Sem fundos, o item ativo precisa de outra marca visual. */
-[data-contrast="alto"] :is([aria-current="true"], [aria-checked="true"], [aria-pressed="true"]) {
+[data-contrast="alto"] :is([aria-current="true"], [aria-current="page"], [aria-current="step"], [aria-checked="true"], [aria-pressed="true"]) {
   outline: 2px solid #ffff00;
   outline-offset: 2px;
 }
@@ -246,7 +246,7 @@ body {
     border: 1px solid CanvasText;
   }
 
-  :is([aria-current="true"], [aria-checked="true"], [aria-pressed="true"]) {
+  :is([aria-current="true"], [aria-current="page"], [aria-current="step"], [aria-checked="true"], [aria-pressed="true"]) {
     outline: 2px solid Highlight;
     outline-offset: 2px;
   }

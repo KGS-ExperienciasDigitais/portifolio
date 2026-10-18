@@ -1,4 +1,4 @@
-import { ArrowRight, Info } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Media } from "@/components/ui/Media";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import type { Block, CaseMedia } from "@/content/cases/types";
@@ -41,22 +41,11 @@ export function TextBlock({ heading, body, bullets, ordered, after }: BlockOf<"t
   );
 }
 
-export function Callout({ tone, text }: BlockOf<"callout">) {
-  if (tone === "question") {
-    return (
-      <blockquote className="max-w-3xl border-l-4 border-accent py-2 pl-6 text-2xl leading-snug font-medium text-balance sm:text-3xl">
-        <RichText text={text} />
-      </blockquote>
-    );
-  }
-
+export function Callout({ text }: BlockOf<"callout">) {
   return (
-    <aside className="flex max-w-3xl gap-3 rounded-lg bg-black/4 p-4 text-base leading-relaxed text-muted dark:bg-white/6">
-      <Info aria-hidden className="mt-1 size-4 shrink-0 text-accent" />
-      <p>
-        <RichText text={text} />
-      </p>
-    </aside>
+    <blockquote className="max-w-3xl border-l-4 border-accent py-2 pl-6 text-2xl leading-snug font-medium text-balance sm:text-3xl">
+      <RichText text={text} />
+    </blockquote>
   );
 }
 
@@ -185,16 +174,19 @@ export function ABCompare({ a, b, note }: BlockOf<"ab">) {
 }
 
 const metricTone = { before: "", after: "text-success", neutral: "text-accent" };
+// Colunas pelo número de cards: um card sozinho ocupa a largura toda em vez de um terço.
+const metricColumns = ["", "", "sm:grid-cols-2", "sm:grid-cols-3"];
 
-export function MetricCards({ label, tone, items }: BlockOf<"metrics">) {
+// `compact`: numa coluna estreita (visual do resumo), com menos espaço entre os cards e rótulo menor.
+export function MetricCards({ label, tone, items, compact }: BlockOf<"metrics"> & { compact?: boolean }) {
   return (
     <div>
       {label && <p className="mb-4 text-lg font-semibold">{label}</p>}
-      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-12">
+      <ul className={`grid grid-cols-1 ${compact ? "gap-4" : "gap-6 md:gap-12"} ${metricColumns[items.length] ?? "sm:grid-cols-3"}`}>
         {items.map((item) => (
           <li key={item.label} className={cardClass}>
             <p className={`mb-2 text-4xl font-semibold ${metricTone[tone]}`}>{item.value}</p>
-            <p className="text-lg font-semibold">{item.label}</p>
+            <p className={`${compact ? "text-base" : "text-lg"} font-semibold`}>{item.label}</p>
           </li>
         ))}
       </ul>

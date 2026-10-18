@@ -1,6 +1,35 @@
-import type { CaseStudy } from "./types";
+import type { CaseMedia, CaseStudy } from "./types";
 
 const img = "/images/cases/regua-de-comunicacao";
+
+const guidingQuestion =
+  "Como acompanhar o cliente com informações úteis, nos momentos certos, considerando suas necessidades e a estrutura disponível na empresa?";
+
+// Os quatro e-mails aparecem no estudo completo e no resumo.
+const emails: CaseMedia[] = [
+  { src: `${img}/email-cadastro.png`, alt: "E-mail de cadastro: Sua conta Next foi criada", width: 640, height: 1421, label: "Cadastro" },
+  {
+    src: `${img}/email-pagamento-confirmado.png`,
+    alt: "E-mail de pagamento confirmado: seu acesso foi liberado",
+    width: 640,
+    height: 1577,
+    label: "Pagamento confirmado",
+  },
+  {
+    src: `${img}/email-falha-cobranca.png`,
+    alt: "E-mail de falha na cobrança: não foi possível concluir sua cobrança",
+    width: 640,
+    height: 1650,
+    label: "Falha na cobrança",
+  },
+  {
+    src: `${img}/email-conta-bloqueada.png`,
+    alt: "E-mail de bloqueio: sua conta foi bloqueada",
+    width: 640,
+    height: 1581,
+    label: "Conta bloqueada",
+  },
+];
 
 export const caso1: CaseStudy = {
   slug: "regua-de-comunicacao",
@@ -48,7 +77,7 @@ export const caso1: CaseStudy = {
         {
           type: "callout",
           tone: "question",
-          text: "Como acompanhar o cliente com informações úteis, nos momentos certos, considerando suas necessidades e a estrutura disponível na empresa?",
+          text: guidingQuestion,
         },
       ],
     },
@@ -178,30 +207,7 @@ export const caso1: CaseStudy = {
         },
         {
           type: "gallery",
-          items: [
-            { src: `${img}/email-cadastro.png`, alt: "E-mail de cadastro: Sua conta Next foi criada", width: 640, height: 1421, label: "Cadastro" },
-            {
-              src: `${img}/email-pagamento-confirmado.png`,
-              alt: "E-mail de pagamento confirmado: seu acesso foi liberado",
-              width: 640,
-              height: 1577,
-              label: "Pagamento confirmado",
-            },
-            {
-              src: `${img}/email-falha-cobranca.png`,
-              alt: "E-mail de falha na cobrança: não foi possível concluir sua cobrança",
-              width: 640,
-              height: 1650,
-              label: "Falha na cobrança",
-            },
-            {
-              src: `${img}/email-conta-bloqueada.png`,
-              alt: "E-mail de bloqueio: sua conta foi bloqueada",
-              width: 640,
-              height: 1581,
-              label: "Conta bloqueada",
-            },
-          ],
+          items: emails,
         },
 
         { type: "subsection", title: "Revisão, testes e implementação" },
@@ -213,11 +219,6 @@ export const caso1: CaseStudy = {
             "Após a validação, também realizei testes para verificar como os e-mails se comportavam em desktop, mobile e diferentes dispositivos, identificando pontos que precisavam de ajustes na apresentação.",
             "Os 12 e-mails foram implementados, estabelecendo uma régua de comunicação que antes não existia na plataforma.",
           ],
-        },
-        {
-          type: "callout",
-          tone: "note",
-          text: "A validação envolveu stakeholders e verificações de apresentação dos e-mails. Não foram realizados testes de usabilidade com clientes nessa etapa.",
         },
       ],
     },
@@ -239,16 +240,8 @@ export const caso1: CaseStudy = {
             "A principal entrega foi a implementação de **12 comunicações estruturadas**, cobrindo diferentes momentos do relacionamento com o cliente.",
             "A iniciativa estabeleceu uma base de comunicação para situações que anteriormente não eram acompanhadas por uma régua de e-mails.",
             "Após a implementação, a equipe de suporte relatou perceber uma redução nos chamados relacionados à cobrança e à recorrência durante o atendimento diário.",
+            "Essa percepção da equipe representou um sinal positivo sobre a utilidade das comunicações implementadas.",
           ],
-        },
-        {
-          type: "callout",
-          tone: "note",
-          text: "Esse resultado foi qualitativo. Não houve comparação quantitativa do volume de chamados antes e depois da implementação, portanto não é possível calcular uma redução percentual ou atribuir o efeito exclusivamente aos e-mails.",
-        },
-        {
-          type: "text",
-          body: "Ainda assim, a percepção da equipe representou um sinal positivo sobre a utilidade das comunicações implementadas.",
         },
       ],
     },
@@ -281,4 +274,97 @@ export const caso1: CaseStudy = {
       ],
     },
   ],
+  steps: [
+    {
+      label: "Problema",
+      title: "Clientes sem aviso nos momentos que envolviam dinheiro",
+      body: "A plataforma não confirmava pagamentos nem explicava cobranças recorrentes ou falhas. O cliente ficava sem saber o estado da própria contratação.",
+      visual: [
+        {
+          type: "callout",
+          tone: "question",
+          text: guidingQuestion,
+        },
+      ],
+      more: "O problema",
+    },
+    {
+      label: "Jornada",
+      title: "Do cadastro à renovação",
+      body: "Mapeei cada evento do relacionamento com o cliente e organizei tudo em jornadas, para dois públicos: quem opera a conta e quem decide o contrato.",
+      visual: [
+        {
+          type: "media",
+          items: [
+            {
+              src: `${img}/pontos-de-contato.png`,
+              alt: "Os 18 pontos de contato da régua, do cadastro à renovação, e os dois públicos: responsável pela conta e responsável contratual",
+              width: 1742,
+              height: 1094,
+            },
+          ],
+        },
+      ],
+      more: "Mapeamento da jornada",
+    },
+    {
+      label: "MVP",
+      title: "Um recorte para a primeira versão",
+      body: "Escolhi os envios pela relevância para o cliente, pela necessidade da operação e pela viabilidade. Cinco tentativas de cobrança não precisavam de cinco e-mails.",
+      visual: [
+        {
+          type: "media",
+          items: [
+            {
+              src: `${img}/detalhamento-recorte.png`,
+              alt: "Detalhamento dos pontos de contato com quando, quem recebe, canal, objetivo, informações obrigatórias, CTA e tom",
+              width: 1721,
+              height: 1246,
+              zoomSrc: `${img}/detalhamento-completo.png`,
+              zoomWidth: 1721,
+              zoomHeight: 3880,
+              caption: "Clique para ver a tabela completa.",
+            },
+          ],
+        },
+      ],
+      more: "Priorização: do mapeamento ao MVP",
+    },
+    {
+      label: "E-mails",
+      title: "Uma estrutura, tons diferentes",
+      body: "Todo e-mail traz o motivo do contato no topo, os dados do pagamento e uma ação clara. O tom muda com o momento: confirmar um pagamento não é o mesmo que avisar de um bloqueio.",
+      visual: [
+        {
+          type: "gallery",
+          items: emails,
+        },
+      ],
+      more: "Design dos e-mails",
+    },
+    {
+      label: "Resultado",
+      title: "Uma régua que antes não existia",
+      body: "Depois da revisão com o CEO e o CTO e de testes em desktop e celular, os e-mails foram ao ar. O suporte relatou perceber menos chamados sobre cobrança e recorrência.",
+      visual: [
+        {
+          type: "metrics",
+          tone: "neutral",
+          items: [
+            { value: "18", label: "pontos de contato mapeados" },
+            { value: "5", label: "jornadas organizadas" },
+            { value: "12", label: "e-mails implementados" },
+          ],
+        },
+      ],
+      more: "Resultados",
+    },
+  ],
+  takeaway: {
+    title: "O que aprendi",
+    body: [
+      "A experiência do cliente não acontece só na interface. Em uma plataforma de autosserviço, a comunicação também faz parte da jornada.",
+      "Estruturar eventos, públicos e contexto antes de desenhar as peças foi o que deu clareza aos e-mails.",
+    ],
+  },
 };

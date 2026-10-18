@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { pillItemActive as itemActive, pillItemIdle as itemIdle } from "@/components/ui/pillItem";
+import { useActiveId } from "@/components/ui/useActiveId";
 import { navItems, site } from "@/content/site";
 import { AccessibilityMenu } from "./AccessibilityMenu";
 import { MobileMenu } from "./MobileMenu";
@@ -10,38 +11,12 @@ import { trackCvClick } from "./trackCvClick";
 
 const itemBase =
   "relative rounded-full px-2 py-1.5 text-xs font-medium transition-all duration-200 sm:px-4 sm:py-2 sm:text-sm";
-const itemIdle =
-  "text-gray-700 hover:bg-white/40 hover:text-gray-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white";
-const itemActive =
-  "bg-white/75 font-bold text-black shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] backdrop-blur-sm dark:bg-white/20 dark:text-white dark:shadow-[inset_0_1px_2px_rgba(255,255,255,0.08)]";
 
-function useActiveSection(enabled: boolean) {
-  const [active, setActive] = useState<string>(navItems[0].id);
-
-  useEffect(() => {
-    if (!enabled) return;
-    const sections = navItems
-      .map((item) => document.getElementById(item.id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        }
-      },
-      { rootMargin: "-45% 0px -50% 0px" },
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [enabled]);
-
-  return enabled ? active : null;
-}
+const sectionIds = navItems.map((item) => item.id);
 
 export function Header() {
   const pathname = usePathname();
-  const active = useActiveSection(pathname === "/");
+  const { active } = useActiveId(sectionIds, pathname === "/");
 
   return (
     // O header ocupa a largura toda; só os filhos recebem cliques, para não bloquear a cordinha do tema.

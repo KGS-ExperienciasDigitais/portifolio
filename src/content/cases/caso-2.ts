@@ -2,6 +2,9 @@ import type { CaseStudy } from "./types";
 
 const img = "/images/cases/onboarding-orientado-a-problemas";
 
+const guidingQuestion =
+  "Como ajudar o cliente a identificar um ponto de partida relevante e executar as primeiras configurações sem exigir que ele conheça previamente as funcionalidades do produto?";
+
 const subtitle =
   "Como redesenhei o onboarding da NextApps para orientar novos clientes a partir de suas necessidades, conectando diagnóstico, plano de ação e configuração guiada.";
 
@@ -56,7 +59,7 @@ export const caso2: CaseStudy = {
         {
           type: "callout",
           tone: "question",
-          text: "Como ajudar o cliente a identificar um ponto de partida relevante e executar as primeiras configurações sem exigir que ele conheça previamente as funcionalidades do produto?",
+          text: guidingQuestion,
         },
         {
           type: "text",
@@ -107,11 +110,6 @@ export const caso2: CaseStudy = {
           ],
         },
         {
-          type: "callout",
-          tone: "note",
-          text: "As contagens representam eventos ou acessos conforme o relatório disponível. Não equivalem necessariamente a usuários únicos, conclusões de etapa ou conversões.",
-        },
-        {
           type: "text",
           body: [
             "Além da distribuição entre os caminhos, o que mais chamou minha atenção foi o comportamento dentro das configurações.",
@@ -157,11 +155,6 @@ export const caso2: CaseStudy = {
             "Reuni as necessidades levantadas, considerei os recursos disponíveis na NextApps e organizei os problemas em um mapa de afinidade.",
             "O agrupamento ajudou a identificar temas semelhantes e selecionar os problemas que seriam apresentados no novo onboarding.",
           ],
-        },
-        {
-          type: "callout",
-          tone: "note",
-          text: "Como a consulta envolveu cinco clientes, os resultados não permitiam determinar a frequência dessas necessidades em toda a base. Seu papel foi apoiar a formulação da nova experiência, não representar estatisticamente o público.",
         },
 
         { type: "subsection", title: "A mudança de estratégia" },
@@ -212,11 +205,6 @@ export const caso2: CaseStudy = {
         {
           type: "text",
           body: "O período gratuito de sete dias permaneceu o mesmo nas duas versões. A mudança estava na ordem das etapas.",
-        },
-        {
-          type: "callout",
-          tone: "note",
-          text: "Essa decisão foi implementada junto com o onboarding orientado por problemas. Por isso, os efeitos das duas mudanças não puderam ser avaliados isoladamente.",
         },
 
         { type: "subsection", title: "Estruturando os diagnósticos e planos de ação" },
@@ -348,11 +336,6 @@ export const caso2: CaseStudy = {
             "Esses resultados forneceram evidências iniciais de que os participantes conseguiam compreender e executar as tarefas propostas.",
           ],
         },
-        {
-          type: "callout",
-          tone: "note",
-          text: "Entretanto, a amostra era pequena e incluía pessoas com familiaridade prévia com a NextApps. Por isso, os resultados não podem ser generalizados para todos os novos clientes.",
-        },
       ],
     },
     {
@@ -375,16 +358,8 @@ export const caso2: CaseStudy = {
             "Antes do redesenho, alguns clientes cadastravam o cartão, ativavam os sete dias gratuitos e cancelavam antes da primeira cobrança.",
             "Com a nova jornada em funcionamento, passei a observar novos clientes concluindo o período de teste e permanecendo como clientes pagantes.",
             "Essa mudança percebida na operação sugeriu uma possível melhoria na transição entre experimentação e contratação.",
+            "O resultado mais diretamente validado foi a capacidade dos participantes de concluir os percursos e realizar as configurações avaliadas nos testes.",
           ],
-        },
-        {
-          type: "callout",
-          tone: "note",
-          text: "Entretanto, não havia uma comparação quantitativa consolidada entre os períodos, nem uma janela de retenção definida para medir o resultado. Além disso, a antecipação do checkout e a mudança na abordagem do onboarding foram implementadas juntas. Por isso, não é possível atribuir isoladamente a permanência observada a uma dessas decisões.",
-        },
-        {
-          type: "text",
-          body: "O resultado mais diretamente validado foi a capacidade dos participantes de concluir os percursos e realizar as configurações avaliadas nos testes.",
         },
       ],
     },
@@ -444,4 +419,111 @@ export const caso2: CaseStudy = {
       ],
     },
   ],
+  steps: [
+    {
+      label: "Desafio",
+      title: "Um onboarding que já não mostrava o produto",
+      body: "O onboarding pedia para conectar o WhatsApp e criar uma IA, mas a NextApps tinha crescido. A liderança me pediu uma nova experiência de entrada.",
+      visual: [
+        {
+          type: "callout",
+          tone: "question",
+          text: guidingQuestion,
+        },
+      ],
+      more: "O desafio",
+    },
+    {
+      label: "Dados",
+      title: "O que o GA4 mostrou",
+      body: [
+        "A primeira versão era um hub com três caminhos: CRM, IA ou pedir ajuda. No GA4, vi pessoas interrompendo as configurações e alternando entre CRM e IA.",
+        "Talvez estivéssemos pedindo uma escolha antes de o cliente saber do que precisava.",
+      ],
+      visual: [
+        {
+          type: "table",
+          columns: ["Etapa", "Contagem registrada"],
+          align: ["left", "right"],
+          rows: [
+            ["Hub de onboarding", "26"],
+            ["Configuração de CRM a partir do hub", "12"],
+            ["Configuração de agentes a partir do hub", "6"],
+            ["Planos a partir do hub", "8"],
+            ["Checkout a partir de planos", "7"],
+          ],
+        },
+      ],
+      more: "O que observei no GA4",
+    },
+    {
+      label: "Problema",
+      title: "Começar pelo problema, não pela ferramenta",
+      body: "Conversei com cinco clientes pelo WhatsApp. Eles descreviam situações da operação, não funcionalidades. Por isso, a nova entrada pergunta o que o cliente sente que precisa melhorar.",
+      visual: [
+        {
+          type: "media",
+          items: [
+            {
+              src: `${img}/tela-necessidade.png`,
+              alt: "Tela do onboarding: O que você sente que precisa melhorar? Com quatro situações para escolher",
+              width: 679,
+              height: 520,
+            },
+          ],
+        },
+      ],
+      more: "Investigando uma abordagem orientada a problemas",
+    },
+    {
+      label: "Checkout",
+      title: "Teste ativado antes do onboarding",
+      body: "Também propus antecipar o checkout: quem se cadastra já ativa os sete dias gratuitos e depois faz o onboarding. As duas mudanças foram ao ar juntas.",
+      visual: [
+        { type: "flow", label: "Antes", steps: ["Site", "Cadastro", "Onboarding", "Checkout"], highlight: [3] },
+        { type: "flow", label: "Depois", steps: ["Site", "Cadastro", "Checkout e ativação do teste", "Onboarding"], highlight: [2] },
+      ],
+      more: "Reorganizando a jornada de contratação",
+    },
+    {
+      label: "Plano",
+      title: "Do diagnóstico à configuração guiada",
+      body: "Com o CEO, liguei cada problema a perguntas de contexto, um diagnóstico e um plano de ação. Ao aprovar o plano, um walkthrough mostra onde fazer cada configuração na plataforma.",
+      visual: [
+        { type: "flow", steps: ["Necessidade", "Contexto", "Diagnóstico", "Plano de ação", "Execução"] },
+        {
+          type: "media",
+          items: [
+            {
+              src: `${img}/rascunho-5.jpg`,
+              alt: "Rascunho do plano de correção: trazer contatos, organizar quem abordar, reativar conversas e acompanhar os interesses",
+              width: 1280,
+              height: 720,
+            },
+          ],
+        },
+      ],
+      more: "Estruturando os diagnósticos e planos de ação",
+    },
+    {
+      label: "Resultado",
+      title: "Percursos concluídos sem ajuda",
+      body: "Nos testes moderados, acompanhei cada participante do cadastro às configurações, sem indicar onde clicar. Na operação, passei a ver novos clientes saindo do teste como pagantes.",
+      visual: [
+        {
+          type: "metrics",
+          tone: "neutral",
+          items: [{ value: "3 de 3", label: "participantes concluíram os percursos sem ajuda" }],
+        },
+      ],
+      more: "Resultados",
+    },
+  ],
+  takeaway: {
+    title: "O que aprendi",
+    body: [
+      "Os dados de uso me fizeram rever a primeira proposta. Entender o problema do cliente foi mais útil do que apresentar a ferramenta.",
+      "E a orientação só funciona quando chega à execução: por isso o plano leva direto às configurações.",
+    ],
+  },
 };

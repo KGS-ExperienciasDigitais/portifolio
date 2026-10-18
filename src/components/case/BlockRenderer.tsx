@@ -1,12 +1,15 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { slugify } from "@/content/cases/slug";
 import type { Block } from "@/content/cases/types";
 import { ABCompare, Callout, FindingCards, Flow, Gallery, ListCards, MediaRow, MetricCards, TableBlock, TextBlock } from "./Blocks";
 import { SubSectionTitle } from "./SubSection";
 
-function renderBlock(block: Block) {
+// `compact` vale para blocos mostrados numa coluna estreita (o visual de uma etapa do resumo).
+export function renderBlock(block: Block, { compact = false } = {}) {
   switch (block.type) {
     case "subsection":
-      return <SubSectionTitle>{block.title}</SubSectionTitle>;
+      // O id recebe os links "Ler no estudo completo" do resumo.
+      return <SubSectionTitle id={slugify(block.title)}>{block.title}</SubSectionTitle>;
     case "text":
       return <TextBlock {...block} />;
     case "callout":
@@ -20,7 +23,7 @@ function renderBlock(block: Block) {
     case "ab":
       return <ABCompare {...block} />;
     case "metrics":
-      return <MetricCards {...block} />;
+      return <MetricCards {...block} compact={compact} />;
     case "lists":
       return <ListCards {...block} />;
     case "table":
