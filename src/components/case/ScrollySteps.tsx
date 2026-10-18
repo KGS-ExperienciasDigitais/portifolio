@@ -97,11 +97,13 @@ export function ScrollySteps({ steps, closing, fullHref }: ScrollyStepsProps) {
           const current = step.id === active;
           return (
             <Fragment key={step.id}>
+              {/* O pb fica dentro do min-h: só aparece quando o texto passa da altura mínima (tela baixa, texto
+                  ampliado). Sem ele, a etapa seguinte encostava no fim da anterior. */}
               <div
                 id={step.id}
                 onFocusCapture={() => select(step.id)}
                 style={{ "--row": index + 1 } as React.CSSProperties}
-                className="scroll-mt-16 lg:col-start-1 lg:row-start-(--row) lg:min-h-[75dvh]"
+                className="scroll-mt-16 lg:col-start-1 lg:row-start-(--row) lg:min-h-[75dvh] lg:pb-24"
               >
                 <Reveal>{step.text}</Reveal>
               </div>
