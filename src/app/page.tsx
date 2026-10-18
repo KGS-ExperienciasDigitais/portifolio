@@ -36,9 +36,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd).replace(/</g, "\\u003c") }}
       />
       <Hero />
-      {/* O que vem abaixo do Hero só aparece depois que o visitante rola a página. */}
+      {/* O que vem abaixo do Hero só aparece depois que o visitante rola a página, menos o título de Projetos
+          (o ProjectsSection esconde o próprio conteúdo). */}
+      <ProjectsSection />
       <RevealOnScroll>
-        <ProjectsSection />
         <About />
         <ContactSection />
       </RevealOnScroll>
