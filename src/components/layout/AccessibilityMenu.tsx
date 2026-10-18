@@ -47,7 +47,7 @@ const swatches: Record<ContrastId, string> = {
 };
 
 const sizeButton =
-  "inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 font-bold text-gray-800 transition-colors hover:bg-white/50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent dark:text-slate-100 dark:hover:bg-white/10";
+  "inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 font-bold text-gray-800 transition-colors hover:bg-black/5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent dark:text-slate-100 dark:hover:bg-white/10";
 
 // O texto "Acessibilidade" só aparece onde cabe sem encostar na cordinha do tema; antes disso, fica só o ícone
 // (o aria-label mantém o mesmo nome para leitores de tela).
@@ -112,7 +112,7 @@ export function AccessibilityMenu({ labelFrom }: { labelFrom: keyof typeof label
         aria-controls={panelId}
         aria-label="Acessibilidade"
         title="Acessibilidade"
-        className={`glass inline-flex h-(--icon-button) min-w-(--icon-button) items-center justify-center gap-2 rounded-full text-sm font-medium text-black transition-colors hover:bg-white/60 md:h-12 md:min-w-12 dark:text-slate-100 dark:hover:bg-white/10 ${labelBreakpoints[labelFrom].button}`}
+        className={`glass inline-flex h-(--icon-button) min-w-(--icon-button) items-center justify-center gap-2 rounded-full text-sm font-medium text-black transition-colors hover:bg-black/5 md:h-12 md:min-w-12 dark:text-slate-100 dark:hover:bg-white/10 ${labelBreakpoints[labelFrom].button}`}
       >
         <Accessibility className="size-(--icon) shrink-0 md:size-5" aria-hidden />
         <span className={labelBreakpoints[labelFrom].label}>Acessibilidade</span>
@@ -180,8 +180,8 @@ export function AccessibilityMenu({ labelFrom }: { labelFrom: keyof typeof label
                   onKeyDown={(event) => handleRadioKeyDown(event, index)}
                   className={`flex items-center gap-3 rounded-xl px-3 py-2 text-left transition-colors ${
                     checked
-                      ? "bg-white/75 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] dark:bg-white/20"
-                      : "hover:bg-white/40 dark:hover:bg-white/10"
+                      ? "bg-black/10 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] dark:bg-white/20"
+                      : "hover:bg-black/5 dark:hover:bg-white/10"
                   }`}
                 >
                   <span

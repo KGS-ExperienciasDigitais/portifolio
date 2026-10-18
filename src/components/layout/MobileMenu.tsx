@@ -36,7 +36,7 @@ export function MobileMenu({ active }: { active: string | null }) {
                   href={`/#${item.id}`}
                   onClick={close}
                   aria-current={active === item.id ? "true" : undefined}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-gray-800 hover:bg-white/50 aria-[current=true]:font-bold dark:text-slate-200 dark:hover:bg-white/10"
+                  className="block rounded-xl px-4 py-3 text-base font-medium text-gray-800 hover:bg-black/5 aria-[current=true]:bg-black/10 aria-[current=true]:font-bold dark:text-slate-200 dark:aria-[current=true]:bg-white/20 dark:hover:bg-white/10"
                 >
                   {item.label}
                 </Link>
@@ -51,7 +51,7 @@ export function MobileMenu({ active }: { active: string | null }) {
                   trackCvClick();
                   close();
                 }}
-                className="block rounded-xl px-4 py-3 text-base font-medium text-gray-800 hover:bg-white/50 dark:text-slate-200 dark:hover:bg-white/10"
+                className="block rounded-xl px-4 py-3 text-base font-medium text-gray-800 hover:bg-black/5 dark:text-slate-200 dark:hover:bg-white/10"
               >
                 CV
               </a>
