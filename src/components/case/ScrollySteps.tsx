@@ -54,7 +54,7 @@ export function ScrollySteps({ steps, closing, fullHref }: ScrollyStepsProps) {
 
   return (
     <div>
-      <nav aria-label="Etapas do resumo" className="glass sticky top-20 z-40 mb-16 flex items-center gap-1 rounded-full px-2 py-0.5">
+      <nav aria-label="Etapas do resumo" className="glass sticky top-20 z-40 mb-10 flex items-center gap-1 rounded-full px-2 py-0.5 md:mb-16">
         <ol ref={listRef} className="relative flex min-w-0 flex-1 items-center overflow-x-auto p-1 scrollbar-none">
           {all.map((step, index) => {
             const current = step.id === active;
@@ -109,7 +109,7 @@ export function ScrollySteps({ steps, closing, fullHref }: ScrollyStepsProps) {
                   Com texto ampliado o visual pode passar da altura da tela: ganha rolagem própria (no tamanho normal todos cabem). */}
               <div
                 onFocusCapture={() => select(step.id)}
-                className={`mt-8 mb-24 lg:sticky lg:top-40 lg:col-start-2 lg:row-span-full lg:my-0 lg:self-start lg:text-up:max-h-[calc(100dvh-12rem)] lg:text-up:overflow-y-auto lg:motion-safe:transition-[opacity,translate] lg:motion-safe:duration-500 lg:motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                className={`mt-6 mb-16 md:mt-8 md:mb-24 lg:sticky lg:top-40 lg:col-start-2 lg:row-span-full lg:my-0 lg:self-start lg:text-up:max-h-[calc(100dvh-12rem)] lg:text-up:overflow-y-auto lg:motion-safe:transition-[opacity,translate] lg:motion-safe:duration-500 lg:motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   current ? "lg:z-10" : "lg:pointer-events-none lg:translate-y-3 lg:opacity-0"
                 }`}
               >

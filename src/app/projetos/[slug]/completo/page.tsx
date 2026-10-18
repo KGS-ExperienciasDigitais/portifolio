@@ -47,12 +47,12 @@ async function FullContent({ params }: Pick<PageProps<"/projetos/[slug]/completo
 
   return (
     <>
-      <Reveal delay={0.1} className="mb-16">
+      <Reveal delay={0.1} className="mb-10 md:mb-16">
         <CaseCover study={study} />
       </Reveal>
       <Overview overview={study.overview} />
       {study.sections.map((section) => (
-        <section key={section.title} className="mb-24">
+        <section key={section.title} className="mb-16 md:mb-24">
           <SectionTitle id={slugify(section.title)}>{section.title}</SectionTitle>
           <BlockRenderer blocks={section.blocks} />
         </section>

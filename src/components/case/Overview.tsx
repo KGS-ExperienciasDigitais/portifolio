@@ -7,7 +7,7 @@ export function Overview({ overview }: { overview: CaseStudy["overview"] }) {
   const { info, role, summary, strategy } = overview;
 
   return (
-    <section className="mb-24">
+    <section className="mb-16 md:mb-24">
       <SectionTitle>Visão geral</SectionTitle>
 
       <Reveal>
@@ -22,7 +22,7 @@ export function Overview({ overview }: { overview: CaseStudy["overview"] }) {
       </Reveal>
 
       {(role || summary || strategy) && (
-        <div className="mt-16 grid grid-cols-1 gap-x-24 gap-y-16 text-lg md:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-x-24 gap-y-10 text-lg md:mt-16 md:grid-cols-2 md:gap-y-16">
           {role && (
             <Reveal>
               <SubSectionTitle>Meu papel</SubSectionTitle>

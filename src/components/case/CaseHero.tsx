@@ -8,7 +8,7 @@ import { ModeSwitch } from "./ModeSwitch";
 // Topo comum ao resumo e ao estudo completo (fica no layout e não remonta ao trocar de modo).
 export function CaseHero({ study }: { study: CaseStudy }) {
   return (
-    <header className="pt-28 pb-16">
+    <header className="pt-28 pb-10 md:pb-16">
       <Reveal>
         <Link
           href="/#projetos"

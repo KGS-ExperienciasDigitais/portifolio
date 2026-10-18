@@ -4,7 +4,7 @@ import type { CaseStudy } from "@/content/cases/types";
 
 export function CaseNav({ next }: { next: CaseStudy }) {
   return (
-    <nav aria-label="Próximo estudo de caso" className="mt-24 border-t border-line pt-12">
+    <nav aria-label="Próximo estudo de caso" className="mt-16 border-t border-line pt-8 md:mt-24 md:pt-12">
       <p className="mb-2 text-sm font-medium tracking-wider text-subtle uppercase">Próximo estudo de caso</p>
       <Link
         href={`/projetos/${next.slug}`}

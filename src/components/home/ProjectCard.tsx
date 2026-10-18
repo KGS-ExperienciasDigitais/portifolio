@@ -9,7 +9,7 @@ export function ProjectCard({ project }: { project: CaseStudy }) {
 
   return (
     <article className="group">
-      <Link href={href} tabIndex={-1} aria-hidden className="relative mb-4 block h-96 w-full overflow-hidden rounded-lg">
+      <Link href={href} tabIndex={-1} aria-hidden className="relative mb-4 block aspect-16/10 w-full overflow-hidden rounded-lg md:aspect-auto md:h-96">
         <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105">
           <Media {...project.cover} fill sizes="(min-width: 768px) 50vw, 100vw" className="h-full w-full" />
         </div>

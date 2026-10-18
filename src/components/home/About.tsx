@@ -22,7 +22,7 @@ export function About() {
   return (
     <section id="sobre" className="px-4 pt-16 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-7xl">
-        <Reveal className="mb-16 flex flex-col items-center gap-6 text-center">
+        <Reveal className="mb-10 flex flex-col items-center gap-6 text-center md:mb-16">
           <h2 className="text-4xl font-bold sm:text-5xl md:text-6xl">Sobre mim</h2>
           <CvDownloadButton />
         </Reveal>

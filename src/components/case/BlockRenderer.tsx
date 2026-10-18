@@ -35,10 +35,10 @@ export function renderBlock(block: Block, { compact = false } = {}) {
 
 export function BlockRenderer({ blocks }: { blocks: Block[] }) {
   return (
-    <div className="space-y-12">
+    <div className="space-y-8 md:space-y-12">
       {blocks.map((block, index) => (
         // Subseções ganham um respiro maior antes, como no layout de referência.
-        <Reveal key={index} className={block.type === "subsection" && index > 0 ? "pt-12" : undefined}>
+        <Reveal key={index} className={block.type === "subsection" && index > 0 ? "pt-8 md:pt-12" : undefined}>
           {renderBlock(block)}
         </Reveal>
       ))}

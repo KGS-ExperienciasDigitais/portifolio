@@ -30,11 +30,11 @@ const channels = [
 
 export function ContactSection() {
   return (
-    <section id="contato" className="px-4 pt-16 pb-20 sm:px-6 lg:px-8">
+    <section id="contato" className="px-4 pt-16 pb-16 sm:px-6 md:pb-20 lg:px-8">
       <div className="container mx-auto max-w-4xl">
         <Reveal className="text-center">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">{contact.title}</h2>
-          <p className="mx-auto mb-12 max-w-2xl text-lg">{contact.intro}</p>
+          <p className="mx-auto mb-8 max-w-2xl text-lg md:mb-12">{contact.intro}</p>
         </Reveal>
         <Reveal delay={0.1}>
           {/* Colunas em rem: com o texto ampliado no menu de acessibilidade, os cards quebram de linha sozinhos. */}
