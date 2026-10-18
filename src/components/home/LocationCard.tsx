@@ -66,7 +66,7 @@ export function LocationCard() {
 
   return (
     <GlassCard className="p-6 lg:p-8">
-      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 max-md:justify-center">
         <div className="flex min-w-0 items-center gap-3">
           <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent">
             <MapPin aria-hidden className="size-5" />
@@ -76,8 +76,8 @@ export function LocationCard() {
             <p className="text-xs text-subtle">{info?.diff ?? " "}</p>
           </div>
         </div>
-        <div className="ml-auto text-right">
-          <p className="flex items-center justify-end gap-1.5">
+        <div className="ml-auto text-right max-md:ml-0 max-md:text-center">
+          <p className="flex items-center justify-end gap-1.5 max-md:justify-center">
             {icon}
             <span className="sr-only">Horário local: </span>
             <time className="text-2xl leading-tight font-semibold tabular-nums">{info?.time ?? "--:--"}</time>

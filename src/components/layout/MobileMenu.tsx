@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { navItems, site } from "@/content/site";
 import { AccessibilityMenu } from "./AccessibilityMenu";
+import { ThemeToggle } from "./ThemeToggle";
 import { trackCvClick } from "./trackCvClick";
 
 export function MobileMenu({ active }: { active: string | null }) {
@@ -12,9 +13,10 @@ export function MobileMenu({ active }: { active: string | null }) {
   const close = () => setOpen(false);
 
   return (
-    // A margem deixa espaço para a cordinha do tema no canto direito; dividir pela escala do texto
-    // mantém o espaço fixo, já que a cordinha não cresce com o texto. Com texto ampliado, este menu também vale no desktop.
-    <div className="mr-[calc(6rem/var(--text-scale,1))] flex items-center gap-2 md:hidden text-up:max-lg:flex! text-large:flex!">
+    // No celular, o tema troca no botão de sol/lua, no canto. Com texto ampliado, este menu também vale no desktop,
+    // onde a cordinha continua: a margem deixa espaço para ela, e dividir pela escala do texto mantém o espaço fixo,
+    // já que a cordinha não cresce com o texto.
+    <div className="flex items-center gap-2 md:mr-[calc(6rem/var(--text-scale,1))] md:hidden text-up:max-lg:flex! text-large:flex!">
       <AccessibilityMenu labelFrom="sm" />
       <button
         type="button"
@@ -59,6 +61,9 @@ export function MobileMenu({ active }: { active: string | null }) {
           </ul>
         </nav>
       )}
+
+      {/* Depois do menu no DOM: o Tab vai do botão do menu direto para os links. Na tela fica no canto (o menu é absolute). */}
+      <ThemeToggle className="size-(--icon-button) text-black md:hidden dark:text-slate-100" iconClassName="size-(--icon)" />
     </div>
   );
 }

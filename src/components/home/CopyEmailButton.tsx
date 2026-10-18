@@ -39,9 +39,12 @@ export function CopyEmailButton({ className }: { className: string }) {
             <Mail className="size-8" />
           </span>
           {copied ? (
-            <Check className="size-5 text-accent" aria-hidden />
+            <Check className="size-5 text-accent max-md:absolute max-md:top-6 max-md:right-6" aria-hidden />
           ) : (
-            <Copy className="size-5 text-subtle transition-colors group-hover:text-accent" aria-hidden />
+            <Copy
+              className="size-5 text-subtle transition-colors group-hover:text-accent max-md:absolute max-md:top-6 max-md:right-6"
+              aria-hidden
+            />
           )}
         </span>
         <span className="flex flex-col gap-1">

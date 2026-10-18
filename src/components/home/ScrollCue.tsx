@@ -1,3 +1,7 @@
+import { site } from "@/content/site";
+
+const { scrollCue } = site;
+
 // Mouse com a rodinha descendo, ao lado do convite para rolar.
 export function ScrollMouse() {
   return (
@@ -11,9 +15,13 @@ export function ScrollMouse() {
       >
         <span className="h-2 w-1 animate-scroll-wheel rounded-full bg-accent motion-reduce:animate-none" />
       </span>
-      <span className="flex flex-col">
-        <span className="font-semibold transition-colors duration-300 group-hover:text-accent">Ver projetos</span>
-        <span className="text-sm text-subtle">role para baixo</span>
+      {/* À esquerda mesmo no Hero centralizado do celular: mouse e texto formam uma peça só. */}
+      <span className="flex flex-col text-left">
+        <span className="font-semibold transition-colors duration-300 group-hover:text-accent">{scrollCue.label}</span>
+        <span className="text-sm text-subtle">
+          <span className="md:hidden">{scrollCue.hintTouch}</span>
+          <span className="hidden md:inline">{scrollCue.hint}</span>
+        </span>
       </span>
     </a>
   );

@@ -29,6 +29,9 @@ export const site = {
     cv: "/cv/kevin-souza-curriculo.pdf",
   },
 
+  // Convite no fim do Hero; no celular, "deslize" no lugar de "role".
+  scrollCue: { label: "Ver projetos", hint: "role para baixo", hintTouch: "deslize para baixo" },
+
   // Botão abaixo do título "Sobre mim"; baixa o PDF de `links.cv`.
   cvButton: "Baixar currículo",
 

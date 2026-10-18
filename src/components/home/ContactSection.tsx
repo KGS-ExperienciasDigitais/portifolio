@@ -7,8 +7,9 @@ import { site } from "@/content/site";
 
 const { contact, links } = site;
 
+// No celular o card é centralizado e o ícone de ação (seta, copiar) vai para o canto, fora do fluxo.
 const cardClass =
-  "group flex h-full w-full flex-col gap-4 rounded-2xl p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+  "group relative flex h-full w-full flex-col gap-4 rounded-2xl p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent max-md:items-center max-md:text-center";
 
 // O e-mail não está aqui: o card dele copia o endereço (CopyEmailButton) em vez de abrir um link.
 const channels = [
@@ -47,7 +48,10 @@ export function ContactSection() {
                   <a href={channel.href} target="_blank" rel="noopener noreferrer" className={cardClass}>
                     <span className="flex items-start justify-between">
                       <span className="transition-colors group-hover:text-accent">{channel.icon}</span>
-                      <ArrowUpRight className="size-5 text-subtle transition-colors group-hover:text-accent" aria-hidden />
+                      <ArrowUpRight
+                        className="size-5 text-subtle transition-colors group-hover:text-accent max-md:absolute max-md:top-6 max-md:right-6"
+                        aria-hidden
+                      />
                     </span>
                     <span className="flex flex-col gap-1">
                       <span className="text-lg font-semibold transition-colors group-hover:text-accent">

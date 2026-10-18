@@ -1,9 +1,9 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { A11Y_CHANGE_EVENT } from "./accessibility";
+import { ThemeToggle } from "./ThemeToggle";
 
 const WIDTH = 100;
 const HEIGHT = 200;
@@ -21,6 +21,15 @@ const noopSubscribe = () => () => {};
 
 function subscribeReducedMotion(callback: () => void) {
   const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+  query.addEventListener("change", callback);
+  return () => query.removeEventListener("change", callback);
+}
+
+// O mesmo `md` do Tailwind. Em media query o rem não sofre a escala de 80% da fonte-raiz.
+const DESKTOP_QUERY = "(min-width: 48rem)";
+
+function subscribeDesktop(callback: () => void) {
+  const query = window.matchMedia(DESKTOP_QUERY);
   query.addEventListener("change", callback);
   return () => query.removeEventListener("change", callback);
 }
@@ -56,26 +65,24 @@ export function ThemeCord() {
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     () => false,
   );
+  const desktop = useSyncExternalStore(subscribeDesktop, () => window.matchMedia(DESKTOP_QUERY).matches, () => false);
 
   const isDark = resolvedTheme === "dark";
   const toggle = () => setTheme(isDark ? "light" : "dark");
 
   if (!mounted) {
-    return <div aria-hidden className="fixed top-2 right-2 z-40 h-54 w-25 sm:right-6" />;
+    return <div aria-hidden className="fixed top-2 right-2 z-40 hidden h-54 w-25 sm:right-6 md:block" />;
   }
+
+  // No celular, o tema troca no botão de sol/lua do header (MobileMenu); sem a corda, o loop de animação também para.
+  if (!desktop) return null;
 
   if (reducedMotion) {
     return (
-      <button
-        type="button"
-        role="switch"
-        aria-checked={isDark}
-        aria-label="Modo escuro"
-        onClick={toggle}
-        className="glass fixed top-4 right-4 z-40 inline-flex size-10 items-center justify-center rounded-full text-gray-800 sm:right-6 dark:text-amber-300"
-      >
-        {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
-      </button>
+      <ThemeToggle
+        className="fixed top-4 right-4 z-40 size-10 text-gray-800 sm:right-6 dark:text-amber-300"
+        iconClassName="size-5"
+      />
     );
   }
 

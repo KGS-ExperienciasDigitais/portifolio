@@ -59,7 +59,7 @@ export function About() {
             <Reveal y={30} delay={0.25} className="flex flex-1 flex-col">
               <GlassCard className="flex flex-1 flex-col gap-8 p-6 lg:p-8">
                 <div className="flex grow flex-col">
-                  <h3 className="mb-6 text-xl font-semibold">Ferramentas</h3>
+                  <h3 className="mb-6 text-xl font-semibold max-md:text-center">Ferramentas</h3>
                   <div className="flex grow flex-col justify-center gap-4">
                     {toolRows.map((row, index) => (
                       <ToolLogoMarquee key={index} items={row} reverse={index % 2 === 1} />
@@ -67,7 +67,7 @@ export function About() {
                   </div>
                 </div>
                 <div className="flex grow flex-col">
-                  <h3 className="mb-6 text-xl font-semibold">Métodos</h3>
+                  <h3 className="mb-6 text-xl font-semibold max-md:text-center">Métodos</h3>
                   <div className="flex grow flex-col justify-center gap-4">
                     {methodRows.map((row, index) => (
                       <SoftwareMarquee key={index} items={row} reverse={index % 2 === 0} />
