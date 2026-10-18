@@ -345,7 +345,7 @@ export const caso2: CaseStudy = {
           type: "metrics",
           tone: "neutral",
           items: [
-            { value: "3 de 3", label: "participantes concluíram os percursos sem ajuda" },
+            { value: "7 de 10", label: "participantes concluíram os percursos sem ajuda" },
             { value: "5", label: "clientes entrevistados" },
             { value: "5", label: "momentos na nova experiência" },
           ],
@@ -513,7 +513,7 @@ export const caso2: CaseStudy = {
         {
           type: "metrics",
           tone: "neutral",
-          items: [{ value: "3 de 3", label: "participantes concluíram os percursos sem ajuda" }],
+          items: [{ value: "7 de 10", label: "participantes concluíram os percursos sem ajuda" }],
         },
       ],
       more: "Resultados",
