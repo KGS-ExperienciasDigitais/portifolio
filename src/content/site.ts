@@ -18,7 +18,7 @@ export const site = {
   shareImage: { src: "/og/home.jpg", alt: "Kevin Souza, UX/UI Designer" } as MediaItem,
 
   links: {
-    email: "seuemail@exemplo.com",
+    email: "kevinsouza.ux@gmail.com",
     linkedin: "https://www.linkedin.com/in/kevintheux/",
     // `number` no formato do wa.me: DDI + DDD + número, só dígitos. `message` já vem escrita na conversa.
     whatsapp: {
