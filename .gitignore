@@ -46,6 +46,7 @@ next-env.d.ts
 # imagens brutas (as versões usadas pelo site estão em public/)
 /caso1-img/
 /caso2-img/
+/caso3-img/
 /hero/
 /tools-logos/
 
