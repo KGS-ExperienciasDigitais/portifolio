@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 
-// Alterna entre o resumo (/projetos/slug) e o estudo completo (/projetos/slug/completo).
+// Alterna entre o estudo completo (/projetos/slug, o padrão) e o resumo (/projetos/slug/resumo).
 // Escolher o modo pesa mais que navegar dentro dele: trilho sólido e ativo preenchido, sem vidro
 // (fica parado no topo), para não se confundir com a barra de etapas, que é de vidro e discreta.
 export function ModeSwitch({ slug }: { slug: string }) {
-  const full = useSelectedLayoutSegment() === "completo";
+  const summary = useSelectedLayoutSegment() === "resumo";
   const modes = [
-    { label: "Resumo", href: `/projetos/${slug}`, active: !full },
-    { label: "Estudo completo", href: `/projetos/${slug}/completo`, active: full },
+    { label: "Estudo completo", href: `/projetos/${slug}`, active: !summary },
+    { label: "Resumo", href: `/projetos/${slug}/resumo`, active: summary },
   ];
 
   return (

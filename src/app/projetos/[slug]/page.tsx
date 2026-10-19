@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { CaseSummary } from "@/components/case/CaseSummary";
+import { BlockRenderer } from "@/components/case/BlockRenderer";
+import { CaseCover } from "@/components/case/CaseHero";
+import { Overview } from "@/components/case/Overview";
+import { SectionTitle } from "@/components/case/SectionTitle";
+import { SummaryPrompt } from "@/components/case/SummaryPrompt";
+import { Reveal } from "@/components/ui/Reveal";
 import { getCase } from "@/content/cases";
+import { slugify } from "@/content/cases/slug";
 import { site } from "@/content/site";
 import { openGraphBase } from "@/app/shared-metadata";
 
@@ -25,19 +31,34 @@ export async function generateMetadata({ params }: PageProps<"/projetos/[slug]">
   };
 }
 
-// Resumo em etapas, a página padrão do caso. O estudo completo fica em /completo.
-export default function CaseSummaryPage({ params }: PageProps<"/projetos/[slug]">) {
+// Estudo completo, a página padrão do caso: capa, visão geral e todas as seções. O resumo fica em /resumo.
+export default function CaseFullPage({ params }: PageProps<"/projetos/[slug]">) {
   return (
     <Suspense fallback={<div className="min-h-screen" />}>
-      <SummaryContent params={params} />
+      <FullContent params={params} />
     </Suspense>
   );
 }
 
-async function SummaryContent({ params }: Pick<PageProps<"/projetos/[slug]">, "params">) {
+async function FullContent({ params }: Pick<PageProps<"/projetos/[slug]">, "params">) {
   const { slug } = await params;
   const study = getCase(slug);
   if (!study) notFound();
 
-  return <CaseSummary study={study} />;
+  return (
+    <>
+      <Reveal delay={0.1} className="mb-10 md:mb-16">
+        <CaseCover study={study} />
+      </Reveal>
+      <Overview overview={study.overview} />
+      {/* O aviso do resumo fica no canto até o fim da Visão geral passar do meio da tela. */}
+      <SummaryPrompt href={`/projetos/${study.slug}/resumo`} />
+      {study.sections.map((section) => (
+        <section key={section.title} className="mb-16 md:mb-24">
+          <SectionTitle id={slugify(section.title)}>{section.title}</SectionTitle>
+          <BlockRenderer blocks={section.blocks} />
+        </section>
+      ))}
+    </>
+  );
 }

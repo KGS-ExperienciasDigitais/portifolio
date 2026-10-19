@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: site.url },
     ...cases.flatMap((study) => [
       { url: `${site.url}/projetos/${study.slug}` },
-      { url: `${site.url}/projetos/${study.slug}/completo` },
+      { url: `${site.url}/projetos/${study.slug}/resumo` },
     ]),
   ];
 }

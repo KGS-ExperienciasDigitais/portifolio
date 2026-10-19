@@ -39,6 +39,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
+  // O estudo completo ficava em /completo; desde 2026-10-19 é a página padrão do caso.
+  async redirects() {
+    return [{ source: "/projetos/:slug/completo", destination: "/projetos/:slug", permanent: true }];
+  },
 };
 
 export default nextConfig;

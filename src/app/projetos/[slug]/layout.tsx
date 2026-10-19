@@ -4,7 +4,7 @@ import { CaseHero } from "@/components/case/CaseHero";
 import { CaseNav } from "@/components/case/CaseNav";
 import { cases, getCase } from "@/content/cases";
 
-// Vale para o resumo (page.tsx) e para o estudo completo (completo/page.tsx).
+// Vale para o estudo completo (page.tsx) e para o resumo (resumo/page.tsx).
 export function generateStaticParams() {
   return cases.map((study) => ({ slug: study.slug }));
 }

@@ -39,7 +39,7 @@ function Visual({ blocks }: { blocks: Block[] }) {
 
 // Resumo do caso: "Visão geral" (montada do overview e da capa), as etapas de `steps` e o fecho de `takeaway`.
 export function CaseSummary({ study }: { study: CaseStudy }) {
-  const fullHref = `/projetos/${study.slug}/completo`;
+  const fullHref = `/projetos/${study.slug}`;
   const total = study.steps.length + 2;
 
   // Pega erro de digitação no build: um `more` que não existe viraria um link para lugar nenhum.

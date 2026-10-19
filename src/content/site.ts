@@ -35,6 +35,14 @@ export const site = {
   // Botão abaixo do título "Sobre mim"; baixa o PDF de `links.cv`.
   cvButton: "Baixar currículo",
 
+  // Aviso no canto do estudo completo, nas primeiras rolagens. No celular aparece só a pílula com `action`.
+  summaryPrompt: {
+    label: "Resumo do caso",
+    title: "Prefere ver um resumo?",
+    action: "Ver resumo",
+    close: "Fechar aviso do resumo",
+  },
+
   contact: {
     title: "Vamos conversar",
     intro:
