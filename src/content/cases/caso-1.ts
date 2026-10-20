@@ -39,7 +39,7 @@ export const caso1: CaseStudy = {
     "Como estruturei uma régua de comunicação para acompanhar clientes de uma plataforma SaaS B2B, do cadastro ao pós-pagamento, com redução de chamados percebida pela equipe de suporte.",
   summary:
     "Como estruturei uma régua de comunicação para acompanhar clientes de uma plataforma SaaS B2B, do cadastro ao pós-pagamento, com redução de chamados percebida pela equipe de suporte.",
-  cover: { src: `${img}/capa.png`, alt: "Quatro e-mails da régua de comunicação da NextApps com o símbolo da marca ao centro", width: 1920, height: 1200 },
+  cover: { src: `${img}/capa.png`, alt: "Quatro e-mails da régua de comunicação da NextApps: cadastro, pagamento confirmado, falha na cobrança e conta bloqueada", width: 1920, height: 1200 },
   accent: "#0b875c",
   overview: {
     info: [

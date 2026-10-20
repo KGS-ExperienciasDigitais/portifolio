@@ -16,7 +16,7 @@ export const caso2: CaseStudy = {
   summary: subtitle,
   cover: {
     src: `${img}/capa.png`,
-    alt: "Quatro telas do onboarding da NextApps (necessidade, contexto, diagnóstico com plano de ação e configuração guiada) com o símbolo da marca ao centro",
+    alt: "Quatro telas do onboarding da NextApps (necessidade, contexto, diagnóstico com plano de ação e configuração guiada)",
     width: 1920,
     height: 1200,
   },
