@@ -36,8 +36,10 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  // data-scroll-behavior: o Next desliga o scroll suave do CSS só durante a troca de página. Sem ele, a ida ao topo
+  // vira animação, o Next mede antes de ela acabar e rola até a capa do caso. Âncoras na mesma página seguem suaves.
   return (
-    <html lang="pt-BR" className={`${dmSans.variable} antialiased`} suppressHydrationWarning>
+    <html lang="pt-BR" data-scroll-behavior="smooth" className={`${dmSans.variable} antialiased`} suppressHydrationWarning>
       <head>
         {/* Aplica tamanho do texto e contraste salvos antes da primeira pintura, sem piscar. */}
         <script dangerouslySetInnerHTML={{ __html: a11yInitScript }} />

@@ -32,7 +32,7 @@ async function CaseShell({ children, params }: Pick<LayoutProps<"/projetos/[slug
   const accentStyle = study.accent ? ({ "--accent": study.accent } as React.CSSProperties) : undefined;
 
   return (
-    <article style={accentStyle} className="container mx-auto max-w-5xl px-4 pb-16 text-pretty sm:px-6 md:pb-24 lg:px-8">
+    <article style={accentStyle} className="relative container mx-auto max-w-5xl px-4 pb-16 text-pretty sm:px-6 md:pb-24 lg:px-8">
       <CaseHero study={study} />
       {children}
       {next !== study && <CaseNav next={next} />}

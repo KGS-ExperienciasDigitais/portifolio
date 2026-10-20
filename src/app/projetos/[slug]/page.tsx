@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { BlockRenderer } from "@/components/case/BlockRenderer";
 import { CaseCover } from "@/components/case/CaseHero";
+import { CaseTopAnchor } from "@/components/case/CaseTopAnchor";
 import { Overview } from "@/components/case/Overview";
 import { SectionTitle } from "@/components/case/SectionTitle";
 import { SummaryPrompt } from "@/components/case/SummaryPrompt";
@@ -34,9 +35,12 @@ export async function generateMetadata({ params }: PageProps<"/projetos/[slug]">
 // Estudo completo, a página padrão do caso: capa, visão geral e todas as seções. O resumo fica em /resumo.
 export default function CaseFullPage({ params }: PageProps<"/projetos/[slug]">) {
   return (
-    <Suspense fallback={<div className="min-h-screen" />}>
-      <FullContent params={params} />
-    </Suspense>
+    <>
+      <CaseTopAnchor />
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <FullContent params={params} />
+      </Suspense>
+    </>
   );
 }
 

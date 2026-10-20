@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { CaseSummary } from "@/components/case/CaseSummary";
+import { CaseTopAnchor } from "@/components/case/CaseTopAnchor";
 import { getCase } from "@/content/cases";
 import { site } from "@/content/site";
 import { openGraphBase } from "@/app/shared-metadata";
@@ -29,9 +30,12 @@ export async function generateMetadata({ params }: PageProps<"/projetos/[slug]/r
 // Resumo em etapas. O estudo completo, página padrão do caso, fica em /projetos/slug.
 export default function CaseSummaryPage({ params }: PageProps<"/projetos/[slug]/resumo">) {
   return (
-    <Suspense fallback={<div className="min-h-screen" />}>
-      <SummaryContent params={params} />
-    </Suspense>
+    <>
+      <CaseTopAnchor />
+      <Suspense fallback={<div className="min-h-screen" />}>
+        <SummaryContent params={params} />
+      </Suspense>
+    </>
   );
 }
 
