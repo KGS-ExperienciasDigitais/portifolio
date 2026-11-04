@@ -9,7 +9,7 @@ export const site = {
   logo: "/logos-kevin/simbolo-azul-128.png",
   role: "UX/UI Designer",
   tagline: "Desenho produtos digitais e experiências faceis, úteis e intencionais. Conheça meu trabalho abaixo.",
-  description: "Portfólio de UX/UI Design com estudos de caso de produtos digitais.",
+  description: "Produtos digitais do problema ao resultado. Veja meus estudos de caso.",
   // Versão principal do domínio, sem barra no fim (o www redireciona para ela na hospedagem).
   url: "https://kevintheux.com.br",
 
